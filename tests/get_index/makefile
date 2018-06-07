@@ -1,8 +1,8 @@
-OBJECT  := ../src/smart_array.cpp
+OBJECT  := ../../src/smart_array.cpp
 SOURCES := $(wildcard ./*.cpp)
 OBJECTS := $(patsubst ./%.cpp, ./%.o, $(SOURCES))
 TARGET  := test.exe
-INCLUDE_PATH := -I../src
+INCLUDE_PATH := -I../../src
 
 $(TARGET) : $(OBJECTS)
 	@echo "test.exe ..."

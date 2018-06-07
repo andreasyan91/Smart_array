@@ -8,7 +8,7 @@
 std::string read_file()
 {
         std::ifstream in_file;
-        in_file.open("input1.txt");
+        in_file.open("input.txt");
         if ( ! in_file.is_open() ) {
                 std::cerr << "couldn't open the file" << std::endl;
         }
@@ -22,14 +22,13 @@ bool testing()
 {
         Smart_array smart_object(5,0);
         std::string data =  read_file();
-        int index = data[0] - '0';
-        int value = data[1] - '0';
+        int index = data[0] - '0';        
         std::ofstream out_file;
-        out_file.open("output1.txt");
+        out_file.open("get_index.txt");
         if ( ! out_file.is_open() ) {
                 std::cerr << "couldn't open the file" << std::endl;
         }
-        if ( smart_object.set(index, value) ) {
+        if ( smart_object.get_index(index) ) {
                 std::cout<<"yes"<<std::endl;
                 out_file << "test1 passed" << std::endl;
         } else {

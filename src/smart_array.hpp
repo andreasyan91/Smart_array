@@ -21,10 +21,16 @@ class Smart_array
                 // Smart_array& is the object from which will be coped
                 Smart_array& operator = (const Smart_array&);
 
-                ///
+                /// This function provides ability for user to call
+                //object_name[i] instead of object_name.function_name
                 int& operator [] (int);
 
-                ////
+                /// This function provides ability for user to call
+                //object_name[i] instead of object_name.function_name with
+                //const                
+                int operator [] (int) const;
+
+                /// Overloading of "<<" function
                 friend std::ostream &operator << (std::ostream&, const Smart_array&);
 
                 ///Changes the value of the given index
@@ -56,11 +62,11 @@ class Smart_array
                 /// Prints all array values                
                 void print();
 
-                ///
-                int sort( int*, int, int);
+                /// algorithm of sorting
+                int sort(int, int);
 
-                ///
-                int* quick_sort(int*, int, int);
+                /// algorithm of sorting
+                void quick_sort(int, int);
         private:
                 int m_size;
                 int* m_array;

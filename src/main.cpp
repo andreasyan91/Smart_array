@@ -5,7 +5,7 @@ int main()
 
 {
         Smart_array arr1(5, 0);
-     /*   arr1.set(3, 88);
+        arr1.set(3, 88);
         arr1.print();
         arr1.set(88,3);
         std::cout << "size = " << arr1.get_size() << std::endl;
@@ -15,7 +15,7 @@ int main()
         std::cout << "size = " << arr1.get_size() << std::endl;
         arr1.resize(4);
         std::cout << "size = " << arr1.get_size() << std::endl;
-        arr1.print();*/
+        arr1.print();
         std::cout << std::endl; 
         Smart_array arr2(arr1);
         arr2.print();
@@ -25,7 +25,7 @@ int main()
         arr2.swap(0, 9);
         arr2.swap(0, 99);
         arr2.swap(99, 0);        
-       /* arr2.print();
+        arr2.print();
         arr2.set(90,1);
         std::cout << "size = " << arr2.get_size() << std::endl;
         arr2.get_index(3);
@@ -34,12 +34,23 @@ int main()
         std::cout << "size = " << arr2.get_size() << std::endl;
         arr2.print();
         arr2.resize(4);
-        std::cout << "size = " << arr2.get_size() << std::endl;*/
+        std::cout << "size = " << arr2.get_size() << std::endl;
+        arr2.print();
+        arr2.resize(4);
+        std::cout << "size = " << arr2.get_size() << std::endl;
         arr2.print();
         std::cout << arr2 << std::endl;
         
-       /* Smart_array arr3 = arr2;
+        Smart_array arr3 = arr2;
+        arr3.set(2,9);
+        arr3.set(3, 88);
+        arr3.set(4, 44);
+        arr3.set(0,101);
+        arr3.set(1, -5);
         arr3.print();
-        std::cout << arr3[188] << std::endl;*/
+        int start = 0;
+        int end = arr3.get_size() - 1;
+        arr3.quick_sort(start, end);
+        arr3.print();
         return 0;
 }

@@ -85,6 +85,16 @@ int& Smart_array::operator [] ( int index)
         }
 }
 
+int Smart_array::operator [] ( int index) const
+{
+        int size = m_size;
+        if ( (index >= 0) && (index <= size) ) {
+                return m_array[index]; 
+        } else {
+                std::cout << "Out of range" << std::endl;        
+        }
+}
+
 bool Smart_array::set (int index, int value)
 {
         int size = get_size();                
@@ -104,23 +114,26 @@ int Smart_array::get_size ()
 
 void Smart_array::resize (int size)
 {
-        int* resized_array = new int [size];
+        if (size != m_size)
+        {
+                int* resized_array = new int [size];
 
-        for (int i=0; i < size; ++i) {
-                resized_array[i] = m_value;
-        }
-        std::cout << "value = "<<m_value;
-        if ( size < m_size) {
-                for (int i = 0; i < size; ++i) {
-                        resized_array[i] = m_array[i];
+                for (int i=0; i < size; ++i) {
+                        resized_array[i] = m_value;
                 }
-        } else {
-                for (int i = 0; i < m_size; ++i) {
-                        resized_array[i] = m_array[i];
+                std::cout << "value = "<<m_value;
+                if ( size < m_size) {
+                        for (int i = 0; i < size; ++i) {
+                                resized_array[i] = m_array[i];
+                        }
+                } else {
+                        for (int i = 0; i < m_size; ++i) {
+                                resized_array[i] = m_array[i];
+                        }
                 }
+                m_size = size;
+                m_array = resized_array;
         }
-        m_size = size;
-        m_array = resized_array;
 }
 
 void Smart_array::print()
@@ -145,36 +158,27 @@ bool Smart_array:: swap(int o, int n)
                 return false;
         } 
 }
-int sort( int* array, int start, int end)
+int Smart_array::sort(int start, int end)
 {
-        std::cout<<"in sort function"<<std::endl;
-        int pivot = array[end];
+        int pivot = m_array[end];
         int index = start;
         int temp;
         for (int i = start; i <= end; ++i) {
-                if ( pivot > array[i] ) {
-                        temp = array[i];
-                        array[i] = array[index];
-                        array[index] = temp;
+                if ( pivot > m_array[i] ) 
+                {
+                        swap(i, index);
                         ++index;
                 }
         }
-        temp = array[index];
-        array[index] = array[end];
-        array[end] = temp;
-        for (int i = start; i <= end; ++i) {
-                std::cout << array[i] << " ";
-        }
-        std::cout<<std::endl;
+        swap(index, end);
         return index;
 }
-int* quick_sort(int* array, int start, int end)
+void Smart_array::quick_sort(int start, int end)
 {
         if ( start < end) {
-                int index = sort(array, start, end);
-                quick_sort(array, start, index - 1);
-                quick_sort(array, index + 1, end);
+                int index = sort(start, end);
+                quick_sort(start, index - 1);
+                quick_sort(index + 1, end);
         }
-        return array;
 }
 

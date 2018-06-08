@@ -1,1 +1,0 @@
-deps/quick_sort.dep  obj/quick_sort.o: src/quick_sort.cpp

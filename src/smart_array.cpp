@@ -3,7 +3,7 @@
 #include "smart_array.hpp"
 
 Smart_array::Smart_array (int s, int v) 
-        :m_size(s), m_value(v)
+        :m_size(s), m_value(v),m_array(0)
 {
         std::cout << "value = " << m_value;
         std::cout << "Constructor called " << std::endl;
@@ -65,8 +65,10 @@ std::ostream& operator << ( std::ostream &output, const Smart_array &obj)
         return output;
 }
 
+//YM improper name
 bool Smart_array::get_index (int index)
 {
+        // can use m_size
         int size = get_size();
         if ( (index >= 0) && (index <= size) ) {
                 return true;
@@ -113,7 +115,10 @@ int Smart_array::get_size ()
 }
 
 void Smart_array::resize (int size)
+
 {
+        //if (size == m_size)
+        //return
         if (size != m_size)
         {
                 int* resized_array = new int [size];

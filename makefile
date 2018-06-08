@@ -31,4 +31,11 @@ html : doxygen
 	@firefox ./docs/doxygen/html/index.html
 
 run : bin/program
-	@./bin/program 
+	@./bin/program
+
+tests: 
+#	cd tests/get_index/ && $(MAKE)
+#	./tests/bin/test1.exe
+#	cd tests/swap/ && $(MAKE)
+#	./tests/bin/test2.exe	
+#	cd test
